@@ -25,6 +25,8 @@ function getCurrentTabUrl(callback) {
 
 $( document ).ready(function() {
 
+    $('#name').focus()
+
     $("body").width(300);
 
     /*chrome.storage.sync.set({ 'Bookmarks': {
@@ -84,7 +86,7 @@ $( document ).ready(function() {
                         delete items[key];
                         chrome.storage.sync.set({ 'Bookmarks': items });
                     })
-                    .css("background-color", "#ffad99")
+                    .css("background-color", "#F1948A")
                     .css("width", "10%")
                     .append("<p/>")
                         .text("[X]"))
@@ -105,14 +107,14 @@ $( document ).ready(function() {
             var name = $("#name").val();
 
             if (name == "") {
-                $("#output").text("Enter a name")
+                $("#output").html("Enter a name <br><br>")
             }
             else if (name in items) {
-                $("#output").text("Bookmark already exists")
+                $("#output").html("Bookmark already exists <br><br>")
             }
             else {
 
-                $("#output").html("&nbsp;")
+                $("#output").html("")
                 getCurrentTabUrl(function(url) {
                     // Add to items
                     items[name] = url;
