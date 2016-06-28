@@ -176,6 +176,15 @@ $( document ).ready(function() {
 
     }) // Button click
 
+    $('#name').keypress(function (e) {
+     var key = e.which;
+     if(key == 13)  // the enter key code
+      {
+        $('#newButton').click();
+        return false;
+      }
+    });
+
 
 }); // Doc ready
 
