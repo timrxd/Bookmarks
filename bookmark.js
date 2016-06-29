@@ -54,6 +54,10 @@ $( document ).ready(function() {
                         getCurrentTabUrl(function(s) {
                             items[key] = s;
                             chrome.storage.sync.set({ 'Bookmarks': items });
+                            $("#output").html("Updated<br><br>").css("color", "blue");
+                            setTimeout(function(){
+                              $('#output').html("").css("color", "red");
+                          }, 4000);
                         })
                     })
                     .css("background-color", "#99ff99")
@@ -85,6 +89,10 @@ $( document ).ready(function() {
                         $("#delete_"+key).remove();
                         delete items[key];
                         chrome.storage.sync.set({ 'Bookmarks': items });
+                        $("#output").html("Deleted<br><br>").css("color", "blue");
+                        setTimeout(function(){
+                          $('#output').html("").css("color", "red");
+                      }, 4000);
                     })
                     .css("background-color", "#F1948A")
                     .css("width", "10%")
@@ -107,10 +115,16 @@ $( document ).ready(function() {
             var name = $("#name").val();
 
             if (name == "") {
-                $("#output").html("Enter a name <br><br>")
+                $("#output").html("Enter a name<br><br>").css("color", "red");
+                setTimeout(function(){
+                  $('#output').html("").css("color", "red");
+              }, 4000);
             }
             else if (name in items) {
-                $("#output").html("Bookmark already exists <br><br>")
+                $("#output").html("Bookmark already exists<br><br>").css("color", "red");
+                setTimeout(function(){
+                  $('#output').html("").css("color", "red");
+              }, 4000);
             }
             else {
 
@@ -132,6 +146,10 @@ $( document ).ready(function() {
                                 getCurrentTabUrl(function(s) {
                                     items[name] = s;
                                     chrome.storage.sync.set({ 'Bookmarks': items });
+                                    $("#output").html("Updated<br><br>").css("color", "blue");
+                                    setTimeout(function(){
+                                      $('#output').html("").css("color", "red");
+                                  }, 4000);
                                 })
                             })
                             .css("background-color", "#99ff99")
@@ -163,6 +181,10 @@ $( document ).ready(function() {
                                 $("#delete_"+name).remove();
                                 delete items[name];
                                 chrome.storage.sync.set({ 'Bookmarks': items });
+                                $("#output").html("Deleted<br><br>").css("color", "blue");
+                                setTimeout(function(){
+                                  $('#output').html("").css("color", "red");
+                              }, 4000);
                             })
                             .css("background-color", "#ffad99")
                             .css("width", "10%")
