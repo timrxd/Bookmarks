@@ -39,6 +39,11 @@ $( document ).ready(function() {
     chrome.storage.sync.get("Bookmarks", function(items){
 
         items = items["Bookmarks"]
+        if ($.isEmptyObject(items)) {
+            items = {};
+            chrome.storage.sync.set({
+                'Bookmarks': {}} );
+        }
 
         $.each( items, function( key, value ) {
 
